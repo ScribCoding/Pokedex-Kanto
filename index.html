@@ -12,11 +12,24 @@
     <body>
 
         <div id="full_container">
-            <nav>navbar</nav>
+            <nav></nav>
             <main id="pokemon_container"></main>
-            <div id="sidebar">Sidebar</div>
-            <div id="content">content1</div>
-            <div id="footer">footer</div>
+            <div id="sidebar">
+                <input id="search_filter" class="" type="text" placeholder="Search...">
+                <button id="numerical_filter" class="filter" onclick="removePokemonButton(2)">NUMERICAL</button>
+                <button id="alphabetical_filter" class="filter" onclick="alphabetical()">ALPHABETICAL</button>
+                <button id="type_filter" class="filter" onclick="addPokemonButton(2)">TYPE</button>
+
+
+            </div>
+            <div id="content">
+                <div id="info">
+                    <div id="pokemon_image">image</div>
+                    <div id="pokemon_description">description</div>
+                    <div id="pokemon_type">type</div>
+                </div>
+            </div>
+            <div id="footer"></div>
         </div>
 
 
@@ -25,8 +38,6 @@
 
 
 
-
         <script src="javascript.js" async defer></script>
-    
     </body>
 </html>
