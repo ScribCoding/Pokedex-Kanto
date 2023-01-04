@@ -12,14 +12,17 @@
     <body>
 
         <div id="full_container">
-            <nav></nav>
+            <nav>
+              <span id="title"></span>
+            </nav>
             <main id="pokemon_container"></main>
             <div id="sidebar">
-                <input id="search_filter" class="" type="text" placeholder="Search...">
+                <div id="search_filter_title" class="filter">SEARCH</div>
+                <input id="search_filter" class="" type="text" placeholder="">
                 <button id="numerical_filter" class="filter" onclick="numerical()">NUMERICAL</button>
                 <button id="alphabetical_filter" class="filter" onclick="alphabetical()">ALPHABETIZE</button>
-                <button id="type_filter" class="filter" onclick="">TYPE</button>
-
+                <button id="type_filter" class="filter" onclick="typeButton()">TYPE</button>
+                <div id="drop_down">
                 <label class="container">NORMAL
                     <input type="checkbox" value="normal" id="normal">
                     <span class="checkmark"></span>
@@ -99,13 +102,19 @@
                     <span class="checkmark"></span>
                   </label>
 
-            </div>
-            <div id="content">
-                <div id="info">
-                    <div id="pokemon_image">image</div>
-                    <div id="pokemon_description">description</div>
-                    <div id="pokemon_type">type</div>
                 </div>
+        
+            </div>
+
+
+            <div id="content">
+              <div id="info">
+                  <div id="pokemon_image" class="hide">
+                    <img id=pokemon_content_image src="">
+                  </div>
+                  <div id="pokemon_description" class=></div>
+              </div>
+
             </div>
             <div id="footer"></div>
         </div>

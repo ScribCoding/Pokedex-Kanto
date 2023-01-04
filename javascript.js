@@ -6,9 +6,50 @@ let kanto_pokemon_types =[["grass","poison"],["grass","poison"],["grass","poison
 let kanto_pokemon = [];//object list
 let pokemon_length = kanto_pokemon_names.length;
 let type_filters = ["normal", "fighting", "flying", "poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon"];
-let current_types = [];
 
-console.log(kanto_pokemon_types.length);
+let current_types = [];
+let buttonAlreadyClicked = false;//to track if a buttons already been clicked
+//title-----------------------------------------------------------------------------------
+let chosenTitle = "KANTO POKEDEX";
+let titleArray = chosenTitle.split("");
+let title = document.getElementById("title");
+for(chars in titleArray){
+    let currentLetter = titleArray[chars];
+    let newDiv = document.createElement("div");
+    newDiv.setAttribute("id","title_letter"+chars)
+    newDiv.innerHTML = (currentLetter);
+
+    if(currentLetter.match(" ")){
+        newDiv.style.backgroundImage = "url(graphics/ui_elements/pokeball_logo.png)";
+        //newDiv.innerHTML = "&nbsp;"
+    }
+    title.appendChild(newDiv);
+}
+
+console.log(title);
+
+for(chars in titleArray){
+    let title_letter_element = document.getElementById("title_letter"+chars);
+    title_letter_element.addEventListener("mouseover",function(){
+
+        this.style.animation = "title_letter_turn 1s";
+    })
+}
+
+for(chars in titleArray){
+    let title_letter_element = document.getElementById("title_letter"+chars);
+    title_letter_element.addEventListener("animationend",function(){
+
+        this.style.animation = "";
+    })
+}
+
+//-------------------------------------------------------------------------------------------
+
+
+
+
+
 class Pokemon{
     constructor(name, index, pokemonType){
         this.name = name;
@@ -39,8 +80,58 @@ const createPokemonButton = (i) => {
     catch{
         newPokemonButton.style.backgroundImage = "url(graphics/pixel_icons/1.png)";
     }
+
+    
     //add the button element into the pokemon display container
     pokemon_container.appendChild(newPokemonButton);
+
+    //DESCRIPTION BOX------------------------------------------------------------------------------------------
+    let pokemon_content_image = document.getElementById("pokemon_content_image")
+
+
+
+    newPokemonButton.addEventListener("mouseover",function(){
+    if(buttonAlreadyClicked==false){
+       if(!(document.getElementById("pokemon_image").classList.contains("showActive"))){
+            pokemon_content_image.setAttribute("src","graphics/pokedex_icons/pokemon ("+this.id+").png");
+            document.getElementById("pokemon_image").classList.add("show");
+            
+        }
+    }
+    })
+
+
+    newPokemonButton.addEventListener("mouseout",function(){
+    if(buttonAlreadyClicked==false){
+        document.getElementById("pokemon_image").classList.remove("show");
+    }
+    
+    
+    })
+
+    newPokemonButton.addEventListener("click",function(){
+        
+        for(let i = 0; i<pokemon_length;i++){
+            console.log((document.getElementById(i+1).classList.contains("showActive")))
+            if((document.getElementById(i+1).classList.contains("pokemonShowClicked"))){
+                console.log("ALREADY CLICKED");
+                buttonAlreadyClicked = true;
+            }
+        }
+            if(buttonAlreadyClicked==false){
+                document.getElementById("pokemon_image").classList.remove("show");
+                document.getElementById("pokemon_image").classList.add("showActive");
+                this.classList.add("pokemonShowClicked");
+        }
+        
+
+    
+    })
+
+
+
+
+
 
 }
 //creates pokemon relative to the names list --------------------------------------------------------------
@@ -48,23 +139,19 @@ for (i=0; i<pokemon_length; i++){
     createPokemonButton(i);
 }
 
+
 //type filters-------------------------------------------------------------------------
-
-
-
 //iterate through the type filter and add the event listener 
 for(index in type_filters){
     
     (document.getElementById(type_filters[index])).addEventListener("change",function(){
-        console.log("-------------------------------------------------NEW SELECTION------------------------------------------");
-        console.log("the currenttypes array is: " + current_types)
        
         if(!current_types.includes(this.value)){
             current_types.push(this.value);
         } else {
             for(index in current_types){
                 if(current_types[index] == this.value){
-                    console.log("IMA DELETE: " + current_types[index])
+
                     current_types.splice(index, 1);
                 }
             }
@@ -72,7 +159,7 @@ for(index in type_filters){
         }
         
         if(current_types.length==0){
-            console.log("RESSETTT");
+
             resetPokemonDisplay();
             return;
         }
@@ -87,11 +174,7 @@ for(index in type_filters){
                     break;
                     }
                 for(k=0; k<current_types.length;k++){//for each type for each pokemon, compare each type in current available types array
-                    //console.log("the current pokemon is: " + document.getElementById(i+1).name);
-                    //console.log("i = " + i + " j = " + j + " k = " + k);
-                    //console.log(kanto_pokemon_types[i][j] + " " + current_types[k]);
-                    //console.log((kanto_pokemon_types[i][j] == (current_types[k])));
-                    //console.log("the current types array length is: " + current_types.length);
+                   
                     if(selected == true){
                         break;
                         }
@@ -100,7 +183,7 @@ for(index in type_filters){
                     if(kanto_pokemon_types[i][j] == (current_types[k])){
                         numberOfTypeMatch++;
                         if(numberOfTypeMatch == current_types.length){
-                            console.log("ITS A MATCH SO ADD THE BUTTON!");
+                           
                             selected = true;
                             addPokemonButton(i);
                             
@@ -114,7 +197,7 @@ for(index in type_filters){
                 
             }
                 if(selected == false){
-                console.log("WRONG");
+
                 removePokemonButton(i);
                 }
         }
@@ -126,12 +209,6 @@ for(index in type_filters){
 
     });
 }
-
-
-
-
-
-
 
 const removePokemonButton = (i) =>{
     let pokemonButton = document.getElementById(i+1);
@@ -181,10 +258,7 @@ const alphabetical = () =>{
              for (pokemonShowingIndex in showingPokemon){
                  let showingID = showingPokemon[pokemonShowingIndex];
                  if(alpha_kanto_pokemon_names[pokemonAlphaIndex] == kanto_pokemon_names[showingID-1]){   
-                     console.log(kanto_pokemon_names[showingID-1]);
-                     console.log(kanto_pokemon[showingID-1]);
                      order++;
-                     console.log(order);
                      //use the object array to get the ID of the pokemon
                      document.getElementById(kanto_pokemon[showingID-1].id).style.order=order;
                             
@@ -240,3 +314,11 @@ const resetPokemonDisplay = () =>{
     }
     
 }
+
+
+
+
+
+
+
+
