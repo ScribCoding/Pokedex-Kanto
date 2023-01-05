@@ -21,7 +21,8 @@
                 <input id="search_filter" class="" type="text" placeholder="">
                 <button id="numerical_filter" class="filter" onclick="numerical()">NUMERICAL</button>
                 <button id="alphabetical_filter" class="filter" onclick="alphabetical()">ALPHABETIZE</button>
-                <button id="type_filter" class="filter" onclick="typeButton()">TYPE</button>
+                <button id="randomize_filter" onclick="randomize()">RANDOM</button>
+                <button id="type_filter" class="filter" onclick="">TYPE</button>
                 <div id="drop_down">
                 <label class="container">NORMAL
                     <input type="checkbox" value="normal" id="normal">
@@ -112,7 +113,46 @@
                   <div id="pokemon_image" class="hide">
                     <img id=pokemon_content_image src="">
                   </div>
-                  <div id="pokemon_description" class=></div>
+                  <div id="stats" class=>
+                    <div id="stats_type_and_stats_name">
+                      <span id="stats_name">
+                      
+                      </span>
+                    
+                      <div id="stats_type">
+                        <span></span>
+                      </div>
+                  </div>
+                    <div id="stats_battle">
+                      <div id="hp" class="bar">
+                        <div id ="hp_text" class="bar_text">0</div>
+                      </div>
+                      <div id="attack" class="bar">
+                        <div id ="attack_text" class="bar_text">0</div>
+                      </div>
+                      <div id="defense" class="bar">
+                        <div id ="defense_text" class="bar_text">0</div>
+                      </div>
+                      <div id="spattack" class="bar">
+                        <div id ="spattack_text" class="bar_text">0</div>
+                      </div>
+                      <div id="spdefense" class="bar">
+                        <div id ="spdefense_text" class="bar_text">0</div>
+                      </div>
+                      <div id="speed" class="bar">
+                        <div id ="speed_text" class="bar_text">0</div>
+                      </div>
+                    </div>
+
+                    <div id="stats_battle_labels">
+                      <p id="hp_label">HP</p>
+                      <p id="attack_label">A</p>
+                      <p id="defense_label">D</p>
+                      <p id="spdefense_label">SP.D</p>
+                      <P id="spattack_label">SP.A</P>
+                      <p id="speed_label">SPD</p>
+                    </div>
+                  </div>
               </div>
 
             </div>
