@@ -18,10 +18,10 @@
             <main id="pokemon_container"></main>
             <div id="sidebar">
                 <div id="search_filter_title" class="filter">SEARCH</div>
-                <input id="search_filter" class="" type="text" placeholder="">
+                <input id="search_filter" class="filter" type="text" placeholder="">
                 <button id="numerical_filter" class="filter" onclick="numerical()">NUMERICAL</button>
                 <button id="alphabetical_filter" class="filter" onclick="alphabetical()">ALPHABETIZE</button>
-                <button id="randomize_filter" onclick="randomize()">RANDOM</button>
+                <button id="randomize_filter" onclick="randomize()" class="filter">RANDOM</button>
                 <button id="type_filter" class="filter" onclick="">TYPE</button>
                 <div id="drop_down">
                 <label class="container">NORMAL
@@ -123,6 +123,7 @@
                         <span></span>
                       </div>
                   </div>
+                  <div id="stats_battle_full">
                     <div id="stats_battle">
                       <div id="hp" class="bar">
                         <div id ="hp_text" class="bar_text">0</div>
@@ -151,6 +152,8 @@
                       <p id="spdefense_label">SP.D</p>
                       <P id="spattack_label">SP.A</P>
                       <p id="speed_label">SPD</p>
+                    </div>
+
                     </div>
                   </div>
               </div>
